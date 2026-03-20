@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-baseURL:import.meta.env.VITE_API_URL,});
+baseURL:"https://team-collab-api-1.onrender.com/api"})
 
 // attach token automatically
 API.interceptors.request.use((req) => {
