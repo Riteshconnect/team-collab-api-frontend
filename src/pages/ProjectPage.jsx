@@ -51,6 +51,7 @@ const ProjectPage = () => {
     const newStatus = statuses[(currentIndex + 1) % statuses.length];
 
     console.log("Updating:", taskId, newStatus);
+    console.log("CALLING:", `/projects/tasks/${taskId}`);
 
     const res = await API.put(`/tasks/${taskId}`, {
       status: newStatus,
