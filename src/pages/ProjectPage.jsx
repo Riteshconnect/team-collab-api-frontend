@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import API from "../services/api";
 import Layout from "../components/layout/Layout";
 import Board from "../components/task/Board";
+import Modal from "../components/ui/Modal";
 
 const ProjectPage = () => {
   const { id } = useParams();
