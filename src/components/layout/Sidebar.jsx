@@ -8,11 +8,12 @@ const Sidebar = ({ onCreateProject, projects = [] }) => {
       <h2 className="text-xl font-bold mb-6">TeamCollab</h2>
 
       <button
-        className="bg-blue-500 text-white px-3 py-2 rounded w-full"
-        onClick={onCreateProject}
-      >
-        + New Project
-      </button>
+  onClick={onCreateProject}
+  disabled={!onCreateProject}
+  className="bg-blue-500 text-white px-3 py-2 rounded w-full disabled:bg-gray-400"
+>
+  + New Project
+</button>
 
       <div className="mt-6">
         <p className="text-sm text-gray-500 mb-2">Projects</p>
