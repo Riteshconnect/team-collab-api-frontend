@@ -44,29 +44,27 @@ const ProjectPage = () => {
   }
 };
 
-  const updateStatus = async (taskId, currentStatus) => {
-    try {
-      const statuses = ["todo", "in-progress", "done"];
-      const currentIndex = statuses.indexOf(currentStatus);
-      const newStatus = statuses[(currentIndex + 1) % statuses.length];
+ const updateStatus = async (taskId, currentStatus) => {
+  try {
+    const statuses = ["todo", "in-progress", "done"];
+    const currentIndex = statuses.indexOf(currentStatus);
+    const newStatus = statuses[(currentIndex + 1) % statuses.length];
 
-          console.log("Updating:", taskId, newStatus); // ✅ DEBUG
+    console.log("Updating:", taskId, newStatus);
 
-    const res = await API.put(`/tasks/${taskId}`, {
+    const res = await API.put(`/projects/tasks/${taskId}`, {
       status: newStatus,
     });
 
-    console.log("Response:", res.data); 
+    console.log("Response:", res.data);
 
-      await API.put(`/tasks/${taskId}`, {
-        status: newStatus,
-      });
+    await fetchTasks();
 
-      await fetchTasks();
-    } catch (error) {
-      alert("Failed to update status");
-    }
-  };
+  } catch (error) {
+    console.log("ERROR:", error.response?.data || error.message);
+    alert("Failed to update status");
+  }
+};
 
   const uploadFile = async (taskId) => {
     try {
