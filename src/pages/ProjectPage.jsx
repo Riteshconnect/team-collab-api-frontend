@@ -52,7 +52,7 @@ const ProjectPage = () => {
 
     console.log("Updating:", taskId, newStatus);
 
-    const res = await API.put(`/projects/tasks/${taskId}`, {
+    const res = await API.put(`/tasks/${taskId}`, {
       status: newStatus,
     });
 
