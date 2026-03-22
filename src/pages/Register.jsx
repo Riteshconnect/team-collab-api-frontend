@@ -11,48 +11,56 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      const res = await API.post("/auth/register", {
-        name,
-        email,
-        password
-      });
-
-      localStorage.setItem("token", res.data.token);
-
-      alert("Registered successfully");
-
-      navigate("/dashboard");
-
-    } catch (error) {
+      await API.post("/auth/register", { name, email, password });
+      navigate("/");
+    } catch (err) {
       alert("Registration failed");
     }
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded-xl shadow-md w-96">
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Create Account 🚀
+        </h2>
 
-      <input
-        placeholder="Name"
-        onChange={(e) => setName(e.target.value)}
-      />
+        <input
+          className="w-full border p-2 rounded mb-4"
+          placeholder="Name"
+          onChange={(e) => setName(e.target.value)}
+        />
 
-      <input
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <input
+          className="w-full border p-2 rounded mb-4"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <input
+          type="password"
+          className="w-full border p-2 rounded mb-4"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button onClick={handleRegister}>Register</button>
+        <button
+          className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+          onClick={handleRegister}
+        >
+          Register
+        </button>
 
-      <p onClick={() => navigate("/")}>
-        Already have an account? Login
-      </p>
+        <p className="text-sm text-center mt-4">
+          Already have an account?{" "}
+          <span
+            className="text-blue-500 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            Login
+          </span>
+        </p>
+      </div>
     </div>
   );
 };
