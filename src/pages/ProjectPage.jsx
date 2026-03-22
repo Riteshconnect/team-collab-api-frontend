@@ -50,6 +50,14 @@ const ProjectPage = () => {
       const currentIndex = statuses.indexOf(currentStatus);
       const newStatus = statuses[(currentIndex + 1) % statuses.length];
 
+          console.log("Updating:", taskId, newStatus); // ✅ DEBUG
+
+    const res = await API.put(`/tasks/${taskId}`, {
+      status: newStatus,
+    });
+
+    console.log("Response:", res.data); 
+
       await API.put(`/tasks/${taskId}`, {
         status: newStatus,
       });
